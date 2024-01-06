@@ -1,4 +1,4 @@
-package softeer.tenten.entity;
+package softeer.tenten.entity.user;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -21,9 +21,9 @@ public class User {
     @Column(name = "id", nullable = false, unique = true)
     private Long id;
 
-    @Column(nullable = false, unique = true)
+    @Column(name = "user_id", nullable = false, unique = true)
     private String userId;
 
-    @Column(nullable = false)
+    @Column(name = "password", nullable = false)
     private String password;
 }
