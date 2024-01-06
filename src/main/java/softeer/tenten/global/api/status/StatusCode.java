@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 @Getter
 @RequiredArgsConstructor
 public enum StatusCode {
+    OK("200", "OK", HttpStatus.OK),
+
     BAD_REQUEST("400", "올바르지 않은 요청입니다.", HttpStatus.BAD_REQUEST),
     FORBIDDEN("403", "접근할 수 없는 요청입니다.", HttpStatus.FORBIDDEN),
     NOT_FOUND("404", "데이터를 찾을 수 없습니다.", HttpStatus.NOT_FOUND),
