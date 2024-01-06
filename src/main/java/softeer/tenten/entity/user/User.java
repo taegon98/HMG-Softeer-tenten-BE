@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import softeer.tenten.entity.area.Vote;
 import softeer.tenten.entity.event.UserEvent;
 
 import java.util.ArrayList;
@@ -31,4 +32,7 @@ public class User {
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<UserEvent> userEvents = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Vote> votes = new ArrayList<>();
 }
