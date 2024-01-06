@@ -71,4 +71,7 @@ public class Popup {
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
     private Category category;
+
+    @OneToMany(mappedBy = "popup", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<PopupTag> popupTags = new ArrayList<>();
 }
