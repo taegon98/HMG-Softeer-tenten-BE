@@ -5,9 +5,10 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import softeer.tenten.entity.area.Vote;
-import softeer.tenten.entity.event.UserEvent;
-import softeer.tenten.entity.event.Waiting;
+import softeer.tenten.entity.popup.area.Vote;
+import softeer.tenten.entity.popup.event.UserEvent;
+import softeer.tenten.entity.popup.event.Waiting;
+import softeer.tenten.entity.popup.review.Review;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,4 +40,7 @@ public class User {
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Waiting> waitings = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Review> reviews = new ArrayList<>();
 }
