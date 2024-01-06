@@ -1,11 +1,11 @@
-package softeer.tenten.entity.event;
+package softeer.tenten.entity.popup.event;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import softeer.tenten.entity.popup.Popup;
+import softeer.tenten.entity.popup.post.Popup;
 import softeer.tenten.entity.user.User;
 
 @Getter

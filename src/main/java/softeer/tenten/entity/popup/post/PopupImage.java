@@ -1,27 +1,29 @@
-package softeer.tenten.entity.popup;
+package softeer.tenten.entity.popup.post;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import softeer.tenten.entity.popup.post.Popup;
 
 @Getter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "category")
-public class Category {
+@Table(name = "popup_image")
+public class PopupImage {
 
     @Id
     @GeneratedValue
     @Column(name = "id", nullable = false, unique = true)
     private Long id;
 
-    @Column(name = "name", nullable = false)
-    private String name;
+    @Column(name = "path")
+    private String path;
 
-    @OneToOne(mappedBy = "category", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "popup_id")
     private Popup popup;
 }

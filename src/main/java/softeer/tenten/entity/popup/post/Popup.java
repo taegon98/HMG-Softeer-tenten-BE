@@ -1,13 +1,17 @@
-package softeer.tenten.entity.popup;
+package softeer.tenten.entity.popup.post;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import softeer.tenten.entity.area.Destination;
-import softeer.tenten.entity.area.Option;
-import softeer.tenten.entity.event.Waiting;
+import softeer.tenten.entity.popup.criteria.Brand;
+import softeer.tenten.entity.popup.criteria.Category;
+import softeer.tenten.entity.popup.criteria.PopupTag;
+import softeer.tenten.entity.popup.area.Destination;
+import softeer.tenten.entity.popup.area.Option;
+import softeer.tenten.entity.popup.event.Waiting;
+import softeer.tenten.entity.popup.review.Review;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -78,4 +82,7 @@ public class Popup {
 
     @OneToMany(mappedBy = "popup", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Waiting> waiting = new ArrayList<>();
+
+    @OneToMany(mappedBy = "popup", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Review> reviews = new ArrayList<>();
 }

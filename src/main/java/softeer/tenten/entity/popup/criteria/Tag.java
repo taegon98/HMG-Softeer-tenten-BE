@@ -1,10 +1,11 @@
-package softeer.tenten.entity.event;
+package softeer.tenten.entity.popup.criteria;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import softeer.tenten.entity.popup.criteria.PopupTag;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,8 +15,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "event")
-public class Event {
+@Table(name = "tag")
+public class Tag {
 
     @Id
     @GeneratedValue
@@ -25,12 +26,6 @@ public class Event {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "content")
-    private String content;
-
-    @Column(name = "code", nullable = false)
-    private String code;
-
-    @OneToMany(mappedBy = "event", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<UserEvent> userEvents = new ArrayList<>();
+    @OneToMany(mappedBy = "tag", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<PopupTag> popupTags = new ArrayList<>();
 }

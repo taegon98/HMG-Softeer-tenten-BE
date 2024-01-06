@@ -1,21 +1,19 @@
-package softeer.tenten.entity.popup;
+package softeer.tenten.entity.popup.criteria;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
-import java.util.ArrayList;
-import java.util.List;
+import softeer.tenten.entity.popup.post.Popup;
 
 @Getter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "tag")
-public class Tag {
+@Table(name = "category")
+public class Category {
 
     @Id
     @GeneratedValue
@@ -25,6 +23,6 @@ public class Tag {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @OneToMany(mappedBy = "tag", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<PopupTag> popupTags = new ArrayList<>();
+    @OneToOne(mappedBy = "category", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Popup popup;
 }
