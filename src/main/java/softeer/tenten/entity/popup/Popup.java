@@ -60,4 +60,7 @@ public class Popup {
 
     @OneToMany(mappedBy = "popup", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Option> option = new ArrayList<>();
+
+    @OneToMany(mappedBy = "popup", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<PopupImage> popupImages = new ArrayList<>();
 }
