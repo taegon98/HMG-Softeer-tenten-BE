@@ -20,4 +20,10 @@ public class ApiResponse<T> {
     public static <T> ApiResponse<T> of(Boolean success, StatusCode statusCode, T data){
         return of(success, statusCode.getCode(), statusCode.getMessage(), data);
     }
+
+    public static <T> ApiResponse<T> onSuccess(T data){
+        StatusCode statusCode = StatusCode.OK;
+
+        return of(true, statusCode, data);
+    }
 }
