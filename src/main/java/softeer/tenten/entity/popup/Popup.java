@@ -6,8 +6,11 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import softeer.tenten.entity.area.Destination;
+import softeer.tenten.entity.area.Option;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Builder
@@ -53,5 +56,8 @@ public class Popup {
     private Integer scrap;
 
     @OneToMany(mappedBy = "popup", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Destination destination;
+    private List<Destination> destination = new ArrayList<>();
+
+    @OneToMany(mappedBy = "popup", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Option> option = new ArrayList<>();
 }
