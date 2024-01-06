@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import softeer.tenten.entity.area.Destination;
 import softeer.tenten.entity.area.Option;
+import softeer.tenten.entity.event.Waiting;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -74,4 +75,7 @@ public class Popup {
 
     @OneToMany(mappedBy = "popup", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<PopupTag> popupTags = new ArrayList<>();
+
+    @OneToMany(mappedBy = "popup", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Waiting> waiting = new ArrayList<>();
 }
