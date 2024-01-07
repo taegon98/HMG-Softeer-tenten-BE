@@ -29,11 +29,8 @@ public class Review {
     @Column(name = "content", nullable = false)
     private String content;
 
-    @Column(name = "created_at", columnDefinition = "TIMESTAMP")
-    private LocalDateTime createdAt;
-
-    @Column(name = "updated_at", columnDefinition = "TIMESTAMP")
-    private LocalDateTime updatedAt;
+    @Column(name = "visited_at", columnDefinition = "TIMESTAMP")
+    private LocalDateTime visitedAt;
 
     @Column(name = "image")
     private String image;
