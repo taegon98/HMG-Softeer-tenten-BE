@@ -1,16 +1,13 @@
-package softeer.tenten.service.popup;
+package softeer.tenten.service.popup.post;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import softeer.tenten.dto.popup.PopupResponse;
-import softeer.tenten.entity.popup.area.Destination;
-import softeer.tenten.entity.popup.criteria.Brand;
-import softeer.tenten.entity.popup.criteria.Category;
+import softeer.tenten.dto.popup.post.PopupResponse;
 import softeer.tenten.entity.popup.post.Popup;
-import softeer.tenten.mapper.popup.PopupMapper;
-import softeer.tenten.repository.popup.PopupRepository;
+import softeer.tenten.mapper.popup.post.PopupMapper;
+import softeer.tenten.repository.popup.post.PopupRepository;
 
 import java.util.List;
 
@@ -25,9 +22,7 @@ public class PopupService {
     public List<PopupResponse.PopupList> getPopupList() {
         List<Popup> popups = popupRepository.findAll();
         return popups.stream()
-                .map(popup -> {
-                    return PopupMapper.toPopupResponse(popup);
-                })
+                .map(PopupMapper::toPopupResponse)
                 .toList();
     }
 
