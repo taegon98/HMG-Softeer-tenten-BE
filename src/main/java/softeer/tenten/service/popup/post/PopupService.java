@@ -1,10 +1,10 @@
-package softeer.tenten.service.popup;
+package softeer.tenten.service.popup.post;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import softeer.tenten.dto.popup.PopupResponse;
+import softeer.tenten.dto.popup.post.PopupResponse;
 import softeer.tenten.entity.popup.post.Popup;
 import softeer.tenten.mapper.popup.post.PopupMapper;
 import softeer.tenten.repository.popup.post.PopupRepository;

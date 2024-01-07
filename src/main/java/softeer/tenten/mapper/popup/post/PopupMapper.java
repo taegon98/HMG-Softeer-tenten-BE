@@ -1,13 +1,9 @@
 package softeer.tenten.mapper.popup.post;
 
-import softeer.tenten.dto.popup.PopupResponse;
-import softeer.tenten.entity.popup.area.Destination;
-import softeer.tenten.entity.popup.criteria.Brand;
-import softeer.tenten.entity.popup.criteria.Category;
+import softeer.tenten.dto.popup.post.PopupResponse;
 import softeer.tenten.entity.popup.post.Popup;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 public class PopupMapper {
 
