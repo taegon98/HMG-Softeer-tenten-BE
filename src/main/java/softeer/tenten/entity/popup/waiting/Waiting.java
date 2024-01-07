@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 import softeer.tenten.entity.popup.post.Popup;
 import softeer.tenten.entity.user.User;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Builder
 @NoArgsConstructor
@@ -20,6 +22,12 @@ public class Waiting {
     @GeneratedValue
     @Column(name = "id", nullable = false, unique = true)
     private Long id;
+
+    @Column(name = "status")
+    private Integer status;
+
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
