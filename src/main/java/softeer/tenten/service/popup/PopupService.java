@@ -1,0 +1,39 @@
+package softeer.tenten.service.popup;
+
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import softeer.tenten.dto.popup.PopupResponse;
+import softeer.tenten.entity.popup.Popup;
+import softeer.tenten.global.api.status.StatusCode;
+import softeer.tenten.global.exception.GeneralException;
+import softeer.tenten.mapper.popup.PopupMapper;
+import softeer.tenten.repository.popup.PopupRepository;
+
+import java.util.List;
+
+@Service
+@RequiredArgsConstructor
+@Transactional(readOnly = true)
+@Slf4j
+public class PopupService {
+
+    private final PopupRepository popupRepository;
+
+    public List<PopupResponse.PopupList> getPopupList() {
+        List<Popup> popups = popupRepository.findAll();
+        return popups.stream()
+                .map(PopupMapper::toPopupResponse)
+                .toList();
+    }
+
+    public PopupResponse.PopupDetail getPopupDetail(Long id) {
+        Popup popup = popupRepository.findById(id).orElseThrow();
+        return PopupMapper.toPopupDetailResponse(popup);
+    }
+
+    public Popup getPopUpByPopUpId(Long popUpId){
+        return popupRepository.findById(popUpId).orElseThrow(() -> new GeneralException(StatusCode.NOT_FOUND));
+    }
+}
