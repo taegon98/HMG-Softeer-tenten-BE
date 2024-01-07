@@ -17,4 +17,9 @@ public class WaitingController {
     public ResponseEntity<Object> createWaiting(@PathVariable Long id, @RequestBody WaitingRequest.RegisterWaiting registerWaiting){
         return ResponseEntity.ok(ApiResponse.onSuccess(waitingService.createWaiting(id, registerWaiting)));
     }
+
+    @GetMapping("/{id}/waiting")
+    public ResponseEntity<Object> getWaiting(@PathVariable Long id, @RequestParam String userId){
+        return ResponseEntity.ok(ApiResponse.onSuccess(waitingService.getWaitingInformation(id, userId)));
+    }
 }
