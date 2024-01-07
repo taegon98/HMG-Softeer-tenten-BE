@@ -23,4 +23,9 @@ public class EventService {
                 .map(EventMapper::toEventResponse)
                 .toList();
     }
+
+    public EventResponse.EventDetail getEventDetail(Long id) {
+        Event event = eventRepository.findById(id).orElseThrow();
+        return EventMapper.toEventDetailResponse(event);
+    }
 }
