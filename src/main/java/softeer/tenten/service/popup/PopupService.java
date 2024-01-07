@@ -27,13 +27,13 @@ public class PopupService {
     public List<PopupResponse.PopupList> getPopupList() {
         List<Popup> popups = popupRepository.findAll();
         return popups.stream()
-                .map(popup -> {
-                    Category category = popup.getCategory();
-                    List<Destination> destinations = popup.getDestination();
-                    Brand brand = popup.getBrand();
-                    return PopupMapper.toPopupResponse(popup, category, destinations, brand);
-                })
+                .map(PopupMapper::toPopupResponse)
                 .toList();
+    }
+
+    public PopupResponse.PopupDetail getPopupDetail(Long id) {
+        Popup popup = popupRepository.findById(id).orElseThrow();
+        return PopupMapper.toPopupDetailResponse(popup);
     }
 
     public Popup getPopUpByPopUpId(Long popUpId){
