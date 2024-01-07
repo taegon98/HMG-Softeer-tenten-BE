@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import softeer.tenten.dto.waiting.WaitingRequest;
 import softeer.tenten.entity.popup.Popup;
 import softeer.tenten.entity.waiting.Waiting;
+import softeer.tenten.dto.popup.waiting.WaitingResponse;
 import softeer.tenten.entity.user.User;
 import softeer.tenten.global.api.status.StatusCode;
 import softeer.tenten.global.exception.GeneralException;
@@ -15,6 +16,10 @@ import softeer.tenten.mapper.waiting.WaitingMapper;
 import softeer.tenten.repository.waiting.WaitingRepository;
 import softeer.tenten.service.popup.PopupService;
 import softeer.tenten.service.user.UserService;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Service
 @RequiredArgsConstructor
@@ -39,6 +44,23 @@ public class WaitingService {
         waitingRepository.save(waiting);
 
         return waiting.getId();
+    }
+
+    @Transactional
+    public WaitingResponse.WaitingInformation getWaitingInformation(Long popUpId, String userId){
+        Waiting waiting = getWaiting(popUpId, userId);
+
+        LocalDateTime waitingTime = waiting.getCreatedAt();
+        LocalDateTime lastDay = LocalDateTime.of(LocalDate.now().minusDays(1), LocalTime.MIDNIGHT);
+
+        Integer waitingNumber = waitingRepository.countAllByPopup_IdAndCreatedAtBetween(popUpId, lastDay, waitingTime);
+        Integer orderNumber = waitingRepository.countAllByPopup_IdAndStatusAndCreatedAtBefore(popUpId, 1, waitingTime);
+
+        return WaitingMapper.toWaitingInformation(waiting.getId(), waitingNumber, orderNumber);
+    }
+
+    public Waiting getWaiting(Long popUpId, String userId){
+        return waitingRepository.findByPopup_IdAndUser_UserId(popUpId, userId).orElseThrow(() -> new GeneralException(StatusCode.NOT_FOUND));
     }
 
     private boolean existsWaiting(Long popUpId, String userId){
