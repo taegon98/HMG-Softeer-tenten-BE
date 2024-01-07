@@ -14,4 +14,14 @@ public class EventResponse {
         private final String title;
         private final String image;
     }
+
+    @Getter
+    @Builder
+    @AllArgsConstructor
+    public static class EventDetail {
+        private final String name;
+        private final String title;
+        private final String content;
+        private final String image;
+    }
 }

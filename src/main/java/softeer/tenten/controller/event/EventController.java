@@ -24,4 +24,10 @@ public class EventController {
         List<EventResponse.EventList> events = eventService.getEventList(id);
         return ResponseEntity.ok(ApiResponse.onSuccess(events));
     }
+
+    @GetMapping("/pop-up/{id}/events/{eventId}")
+    public ResponseEntity<Object> getEventDetail(@PathVariable Long id, @PathVariable Long eventId) {
+        EventResponse.EventDetail event = eventService.getEventDetail(eventId);
+        return ResponseEntity.ok(ApiResponse.onSuccess(event));
+    }
 }
