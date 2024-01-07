@@ -9,6 +9,8 @@ import softeer.tenten.entity.popup.area.Destination;
 import softeer.tenten.entity.popup.criteria.Brand;
 import softeer.tenten.entity.popup.criteria.Category;
 import softeer.tenten.entity.popup.post.Popup;
+import softeer.tenten.global.api.status.StatusCode;
+import softeer.tenten.global.exception.GeneralException;
 import softeer.tenten.mapper.popup.PopupMapper;
 import softeer.tenten.repository.popup.PopupRepository;
 
@@ -25,14 +27,16 @@ public class PopupService {
     public List<PopupResponse.PopupList> getPopupList() {
         List<Popup> popups = popupRepository.findAll();
         return popups.stream()
-                .map(popup -> {
-                    return PopupMapper.toPopupResponse(popup);
-                })
+                .map(PopupMapper::toPopupResponse)
                 .toList();
     }
 
     public PopupResponse.PopupDetail getPopupDetail(Long id) {
         Popup popup = popupRepository.findById(id).orElseThrow();
         return PopupMapper.toPopupDetailResponse(popup);
+    }
+
+    public Popup getPopUpByPopUpId(Long popUpId){
+        return popupRepository.findById(popUpId).orElseThrow(() -> new GeneralException(StatusCode.NOT_FOUND));
     }
 }

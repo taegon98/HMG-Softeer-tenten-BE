@@ -6,8 +6,8 @@ import softeer.tenten.entity.popup.area.Vote;
 import softeer.tenten.entity.user.User;
 
 public class VoteMapper {
-    public static VoteResponse.VoteOption toVoteOption(Option option, Integer result){
-        return VoteResponse.VoteOption.builder()
+    public static VoteResponse.RegisterVote toVoteOption(Option option, Integer result){
+        return VoteResponse.RegisterVote.builder()
                 .id(option.getId())
                 .name(option.getName())
                 .result(result)
