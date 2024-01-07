@@ -30,11 +30,11 @@ public class Popup {
     @Column(name = "id", nullable = false, unique = true)
     private Long id;
 
-    @Column(name = "name", nullable = false)
-    private String name;
-
     @Column(name = "title", nullable = false)
     private String title;
+
+    @Column(name = "introduction", nullable = false)
+    private String introduction;
 
     @Column(name = "content_image", nullable = false)
     private String contentImage;
