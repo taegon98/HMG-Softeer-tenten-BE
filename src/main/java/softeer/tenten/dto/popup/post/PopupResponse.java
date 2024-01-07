@@ -1,4 +1,4 @@
-package softeer.tenten.dto.popup;
+package softeer.tenten.dto.popup.post;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

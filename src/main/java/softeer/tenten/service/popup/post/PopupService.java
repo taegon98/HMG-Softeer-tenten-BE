@@ -4,15 +4,12 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import softeer.tenten.dto.popup.PopupResponse;
-import softeer.tenten.entity.popup.area.Destination;
-import softeer.tenten.entity.popup.criteria.Brand;
-import softeer.tenten.entity.popup.criteria.Category;
+import softeer.tenten.dto.popup.post.PopupResponse;
 import softeer.tenten.entity.popup.post.Popup;
 import softeer.tenten.global.api.status.StatusCode;
 import softeer.tenten.global.exception.GeneralException;
-import softeer.tenten.mapper.popup.PopupMapper;
-import softeer.tenten.repository.popup.PopupRepository;
+import softeer.tenten.mapper.popup.post.PopupMapper;
+import softeer.tenten.repository.popup.post.PopupRepository;
 
 import java.util.List;
 

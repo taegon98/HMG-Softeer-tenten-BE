@@ -1,4 +1,4 @@
-package softeer.tenten.repository.popup;
+package softeer.tenten.repository.popup.post;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
