@@ -8,7 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import softeer.tenten.dto.popup.post.PopupResponse;
 import softeer.tenten.global.api.ApiResponse;
-import softeer.tenten.service.popup.post.PopupService;
+import softeer.tenten.service.popup.PopupService;
+
 
 import java.util.List;
 
