@@ -2,10 +2,8 @@ package softeer.tenten.controller.event;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import softeer.tenten.dto.event.EventRequest;
 import softeer.tenten.dto.event.EventResponse;
 import softeer.tenten.global.api.ApiResponse;
 import softeer.tenten.service.event.EventService;
@@ -27,7 +25,7 @@ public class EventController {
 
     @GetMapping("/pop-up/{id}/events/{eventId}")
     public ResponseEntity<Object> getEventDetail(@PathVariable Long id, @PathVariable Long eventId) {
-        EventResponse.EventDetail event = eventService.getEventDetail(eventId);
+        EventResponse.EventDetail event = eventService.getEventDetail(id, eventId);
         return ResponseEntity.ok(ApiResponse.onSuccess(event));
     }
 }
