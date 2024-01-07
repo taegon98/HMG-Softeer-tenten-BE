@@ -1,4 +1,4 @@
-package softeer.tenten.mapper.popup;
+package softeer.tenten.mapper.popup.post;
 
 import softeer.tenten.dto.popup.PopupResponse;
 import softeer.tenten.entity.popup.area.Destination;
