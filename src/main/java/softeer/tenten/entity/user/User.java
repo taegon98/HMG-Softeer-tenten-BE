@@ -7,7 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import softeer.tenten.entity.popup.area.Vote;
 import softeer.tenten.entity.popup.event.UserEvent;
-import softeer.tenten.entity.popup.event.Waiting;
+import softeer.tenten.entity.popup.waiting.Waiting;
 import softeer.tenten.entity.popup.review.Review;
 
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package softeer.tenten.service.popup.post;
+package softeer.tenten.service.popup;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import softeer.tenten.dto.popup.post.PopupResponse;
 import softeer.tenten.entity.popup.post.Popup;
+import softeer.tenten.global.api.status.StatusCode;
+import softeer.tenten.global.exception.GeneralException;
 import softeer.tenten.mapper.popup.post.PopupMapper;
 import softeer.tenten.repository.popup.post.PopupRepository;
 
@@ -29,5 +31,9 @@ public class PopupService {
     public PopupResponse.PopupDetail getPopupDetail(Long id) {
         Popup popup = popupRepository.findById(id).orElseThrow();
         return PopupMapper.toPopupDetailResponse(popup);
+    }
+
+    public Popup getPopUpByPopUpId(Long popUpId){
+        return popupRepository.findById(popUpId).orElseThrow(() -> new GeneralException(StatusCode.NOT_FOUND));
     }
 }

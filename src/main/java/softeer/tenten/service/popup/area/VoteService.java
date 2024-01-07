@@ -26,7 +26,7 @@ public class VoteService {
     private final UserService userService;
 
     @Transactional
-    public List<VoteResponse.VoteOption> getPopUpVoteOption(Long id){
+    public List<VoteResponse.RegisterVote> getPopUpVoteOption(Long id){
         List<Option> options = getOptionsByPopUpId(id);
 
         if(options.isEmpty()){
