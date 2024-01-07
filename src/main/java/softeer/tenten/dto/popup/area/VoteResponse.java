@@ -8,7 +8,7 @@ public class VoteResponse {
     @Getter
     @Builder
     @RequiredArgsConstructor
-    public static class VoteOption{
+    public static class RegisterVote {
         private final Long id;
         private final String name;
         private final Integer result;
