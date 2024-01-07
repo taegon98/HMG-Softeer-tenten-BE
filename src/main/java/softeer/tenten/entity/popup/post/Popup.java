@@ -39,6 +39,9 @@ public class Popup {
     @Column(name = "content_image", nullable = false)
     private String contentImage;
 
+    @Column(name = "other_image", nullable = false)
+    private String otherImage;
+
     @Column(name = "started_at", columnDefinition = "TIMESTAMP")
     private LocalDateTime startedAt;
 
@@ -53,9 +56,6 @@ public class Popup {
 
     @Column(name = "status")
     private Integer status;
-
-    @Column(name = "url")
-    private String url;
 
     @Column(name = "scrap")
     private Integer scrap;
