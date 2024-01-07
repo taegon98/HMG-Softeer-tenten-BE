@@ -10,7 +10,7 @@ import softeer.tenten.entity.popup.criteria.Category;
 import softeer.tenten.entity.popup.criteria.PopupTag;
 import softeer.tenten.entity.popup.area.Destination;
 import softeer.tenten.entity.popup.area.Option;
-import softeer.tenten.entity.popup.event.Waiting;
+import softeer.tenten.entity.popup.waiting.Waiting;
 import softeer.tenten.entity.popup.review.Review;
 
 import java.time.LocalDateTime;

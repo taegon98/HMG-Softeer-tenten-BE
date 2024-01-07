@@ -1,4 +1,4 @@
-package softeer.tenten.entity.popup.event;
+package softeer.tenten.entity.popup.waiting;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
