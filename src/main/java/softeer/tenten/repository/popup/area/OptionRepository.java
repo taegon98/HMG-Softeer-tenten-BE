@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface OptionRepository extends JpaRepository<Option, Long> {
     List<Option> findAllByPopup_Id(Long popUpId);
+    boolean existsByPopup_IdAndId(Long popUpId, Long optionId);
 }
