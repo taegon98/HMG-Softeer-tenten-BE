@@ -5,10 +5,10 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import softeer.tenten.entity.popup.area.Vote;
-import softeer.tenten.entity.popup.event.UserEvent;
-import softeer.tenten.entity.popup.waiting.Waiting;
-import softeer.tenten.entity.popup.review.Review;
+import softeer.tenten.entity.vote.Vote;
+import softeer.tenten.entity.event.UserEvent;
+import softeer.tenten.entity.waiting.Waiting;
+import softeer.tenten.entity.review.Review;
 
 import java.util.ArrayList;
 import java.util.List;
