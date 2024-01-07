@@ -12,4 +12,13 @@ public class EventMapper {
                 .image(event.getImage())
                 .build();
     }
+
+    public static EventResponse.EventDetail toEventDetailResponse(Event event){
+        return EventResponse.EventDetail.builder()
+                .name(event.getName())
+                .title(event.getTitle())
+                .content(event.getContent())
+                .image(event.getImage())
+                .build();
+    }
 }
