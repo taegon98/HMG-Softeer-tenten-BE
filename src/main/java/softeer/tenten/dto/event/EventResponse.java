@@ -23,5 +23,6 @@ public class EventResponse {
         private final String title;
         private final String content;
         private final String image;
+        private final Integer status;
     }
 }
