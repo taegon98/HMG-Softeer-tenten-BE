@@ -1,7 +1,9 @@
 package softeer.tenten.service.review;
 
+import com.amazonaws.services.s3.AmazonS3Client;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import softeer.tenten.dto.review.ReviewResponse;
@@ -21,6 +23,7 @@ import java.util.Optional;
 public class ReviewService {
 
     private final ReviewRepository reviewRepository;
+
 
     //리뷰 전체 조회
     public List<ReviewResponse.ReviewList> getReviewList(Long id) {
