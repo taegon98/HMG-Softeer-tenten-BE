@@ -22,10 +22,15 @@ public class UserEventService {
     private final EventRepository eventRepository;
     private final UserEventRepository userEventRepository;
 
+    //이벤트 참여
     public void participateEvent(Long id, Long eventId, String code) {
         if (code.equals("938-203-103")) {
             Optional<User> user = userRepository.findById(id);
             Optional<Event> event = eventRepository.findById(eventId);
+
+            if (user.isEmpty() || event.isEmpty()) {
+                throw new GeneralException(StatusCode.NOT_FOUND);
+            }
 
             UserEvent userEvent = UserEvent.builder()
                     .user(user.get())
