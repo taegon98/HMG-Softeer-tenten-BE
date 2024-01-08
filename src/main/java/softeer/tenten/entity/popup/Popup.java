@@ -28,7 +28,7 @@ public class Popup {
 
     @Id
     @GeneratedValue
-    @Column(name = "id", nullable = false, unique = true)
+    @Column(name = "id", nullable = false)
     private Long id;
 
     @Column(name = "title", nullable = false)
@@ -43,10 +43,10 @@ public class Popup {
     @Column(name = "other_image", nullable = false)
     private String otherImage;
 
-    @Column(name = "started_at", columnDefinition = "TIMESTAMP")
+    @Column(name = "started_at", columnDefinition = "DATE")
     private LocalDateTime startedAt;
 
-    @Column(name = "ended_at", columnDefinition = "TIMESTAMP")
+    @Column(name = "ended_at", columnDefinition = "DATE")
     private LocalDateTime endedAt;
 
     @Column(name = "capacity")
@@ -74,7 +74,7 @@ public class Popup {
     @JoinColumn(name = "brand_id")
     private Brand brand;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
     private Category category;
 
