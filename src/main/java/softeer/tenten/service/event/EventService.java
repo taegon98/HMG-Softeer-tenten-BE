@@ -1,7 +1,9 @@
 package softeer.tenten.service.event;
 
+import com.amazonaws.services.s3.AmazonS3Client;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import softeer.tenten.dto.event.EventResponse;
 import softeer.tenten.entity.event.Event;
@@ -26,7 +28,7 @@ public class EventService {
 
     //이벤트 전체 조회
     public List<EventResponse.EventList> getEventList(Long id) {
-        Optional<Event> events = eventRepository.findAllByPopup_Id(id);
+        Optional<Event> events = eventRepository.findAllByPopupId(id);
 
         if (events.isEmpty()) {
             throw new GeneralException(StatusCode.NOT_FOUND);
@@ -38,7 +40,7 @@ public class EventService {
     }
 
     //이벤트 상세 조회
-    public EventResponse.EventDetail getEventDetail(Long id, Long eventId) {
+    public EventResponse.EventDetail getEventDetail(Long id, Long eventId, String imageUrl) {
 
         Optional<Event> event = eventRepository.findById(eventId);
 
@@ -49,10 +51,10 @@ public class EventService {
         Optional<UserEvent> userEvent = userEventRepository.findByUserIdAndEventId(id, eventId);
 
         if (userEvent.isEmpty()) { //Event에 참여하지 않은 경우
-            return EventMapper.toEventDetailResponse(event.get(), 0);
+            return EventMapper.toEventDetailResponse(event.get(), 0, imageUrl);
         }
         else { //Event에 참여한 경우
-            return EventMapper.toEventDetailResponse(event.get(), 1);
+            return EventMapper.toEventDetailResponse(event.get(), 1, imageUrl);
         }
     }
 }
