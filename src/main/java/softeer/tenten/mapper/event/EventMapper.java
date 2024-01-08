@@ -13,12 +13,12 @@ public class EventMapper {
                 .build();
     }
 
-    public static EventResponse.EventDetail toEventDetailResponse(Event event, Integer status){
+    public static EventResponse.EventDetail toEventDetailResponse(Event event, Integer status, String imageUrl){
         return EventResponse.EventDetail.builder()
                 .name(event.getName())
                 .title(event.getTitle())
                 .content(event.getContent())
-                .image(event.getImage())
+                .image(imageUrl)
                 .status(status)
                 .build();
     }
