@@ -12,6 +12,7 @@ import softeer.tenten.mapper.popup.PopupMapper;
 import softeer.tenten.repository.popup.PopupRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -21,16 +22,28 @@ public class PopupService {
 
     private final PopupRepository popupRepository;
 
+    //팝업 전체 조회
     public List<PopupResponse.PopupList> getPopupList() {
         List<Popup> popups = popupRepository.findAll();
+
+        if (popups.isEmpty()) {
+            throw new GeneralException(StatusCode.NOT_FOUND);
+        }
+
         return popups.stream()
                 .map(PopupMapper::toPopupResponse)
                 .toList();
     }
 
+    //팝업 상세 조회
     public PopupResponse.PopupDetail getPopupDetail(Long id) {
-        Popup popup = popupRepository.findById(id).orElseThrow();
-        return PopupMapper.toPopupDetailResponse(popup);
+        Optional<Popup> popup = popupRepository.findById(id);
+
+        if (popup.isEmpty()) {
+            throw new GeneralException(StatusCode.NOT_FOUND);
+        }
+
+        return PopupMapper.toPopupDetailResponse(popup.get());
     }
 
     public Popup getPopUpByPopUpId(Long popUpId){
