@@ -18,7 +18,6 @@ public class ReviewMapper {
         String date = visitDate.getYear() + "." + visitDate.getMonthValue() + "." + visitDate.getDayOfMonth() + "." + visitDate.getDayOfWeek();
 
         return ReviewResponse.ReviewList.builder()
-                .title(review.getTitle())
                 .destination(visitPlace)
                 .date(date)
                 .content(review.getContent())
