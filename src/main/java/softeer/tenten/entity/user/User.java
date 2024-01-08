@@ -32,6 +32,15 @@ public class User {
     @Column(name = "password", nullable = false)
     private String password;
 
+    @Column(name = "nickname", nullable = false)
+    private String nickname;
+
+    @Column(name = "x_coord")
+    private Double xCoord;
+
+    @Column(name = "y_coord")
+    private Double yCoord;
+
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<UserEvent> userEvents = new ArrayList<>();
 

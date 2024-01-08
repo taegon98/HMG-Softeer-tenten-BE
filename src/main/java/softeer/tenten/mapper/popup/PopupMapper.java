@@ -7,10 +7,8 @@ import java.time.LocalDateTime;
 
 public class PopupMapper {
 
-    public static PopupResponse.PopupList toPopupResponse(Popup popup){
-        LocalDateTime startedAt = popup.getStartedAt();
-        LocalDateTime endedAt = popup.getEndedAt();
-        String duration = startedAt.getMonthValue() + "월 " + startedAt.getDayOfMonth() + "일 ~ " + endedAt.getMonthValue() + "월 " + endedAt.getDayOfMonth() + "일";
+    public static PopupResponse.PopupList toPopupResponse(Popup popup, Double distance) {
+        String duration = getString(popup);
 
         return PopupResponse.PopupList.builder()
                 .category(popup.getCategory().getName())
@@ -20,13 +18,12 @@ public class PopupMapper {
                         .map(destination -> destination.getName())
                         .toList())
                 .duration(duration)
+                .distance(distance)
                 .build();
     }
 
     public static PopupResponse.PopupDetail toPopupDetailResponse(Popup popup){
-        LocalDateTime startedAt = popup.getStartedAt();
-        LocalDateTime endedAt = popup.getEndedAt();
-        String duration = startedAt.getMonthValue() + "월 " + startedAt.getDayOfMonth() + "일 ~ " + endedAt.getMonthValue() + "월 " + endedAt.getDayOfMonth() + "일";
+        String duration = getString(popup);
 
         return PopupResponse.PopupDetail.builder()
                 .category(popup.getCategory().getName())
@@ -46,5 +43,12 @@ public class PopupMapper {
                 .contentImage(popup.getContentImage())
                 .otherImage(popup.getOtherImage())
                 .build();
+    }
+
+    private static String getString(Popup popup) {
+        LocalDateTime startedAt = popup.getStartedAt();
+        LocalDateTime endedAt = popup.getEndedAt();
+        String duration = startedAt.getMonthValue() + "월 " + startedAt.getDayOfMonth() + "일 ~ " + endedAt.getMonthValue() + "월 " + endedAt.getDayOfMonth() + "일";
+        return duration;
     }
 }

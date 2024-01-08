@@ -2,15 +2,21 @@ package softeer.tenten.service.popup;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.hibernate.query.Order;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import softeer.tenten.dto.popup.PopupResponse;
 import softeer.tenten.entity.popup.Popup;
+import softeer.tenten.entity.user.User;
 import softeer.tenten.global.api.status.StatusCode;
 import softeer.tenten.global.exception.GeneralException;
 import softeer.tenten.mapper.popup.PopupMapper;
 import softeer.tenten.repository.popup.PopupRepository;
+import softeer.tenten.repository.user.UserRepository;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,6 +27,7 @@ import java.util.Optional;
 public class PopupService {
 
     private final PopupRepository popupRepository;
+    private final UserRepository userRepository;
 
     //팝업 전체 조회
     public List<PopupResponse.PopupList> getPopupList() {
@@ -31,7 +38,7 @@ public class PopupService {
         }
 
         return popups.stream()
-                .map(PopupMapper::toPopupResponse)
+                .map(popup -> PopupMapper.toPopupResponse(popup, getDistance(popup)))
                 .toList();
     }
 
@@ -48,5 +55,24 @@ public class PopupService {
 
     public Popup getPopUpByPopUpId(Long popUpId){
         return popupRepository.findById(popUpId).orElseThrow(() -> new GeneralException(StatusCode.NOT_FOUND));
+    }
+
+    public Double getDistance(Popup popup){
+        Optional<User> userOptional = userRepository.findById(1L);
+        Double xCoord = userOptional.get().getXCoord();
+        Double yCoord = userOptional.get().getYCoord();
+
+        Double distance = Math.sqrt(
+                Math.pow(xCoord - popup.getDestination().get(0).getXCoord(), 2) + Math.pow(yCoord - popup.getDestination().get(0).getYCoord(), 2));
+
+        return distance;
+    }
+
+    public List<PopupResponse.PopupList> sortPopupsByDistance(List<PopupResponse.PopupList> popups) {
+        Comparator<PopupResponse.PopupList> distance = Comparator.comparingDouble(PopupResponse.PopupList::getDistance);
+
+        Collections.sort(popups, distance);
+
+        return popups;
     }
 }
