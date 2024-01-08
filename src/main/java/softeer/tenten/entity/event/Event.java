@@ -20,7 +20,7 @@ public class Event {
 
     @Id
     @GeneratedValue
-    @Column(name = "id", nullable = false, unique = true)
+    @Column(name = "id", nullable = false)
     private Long id;
 
     @Column(name = "name", nullable = false)
@@ -29,11 +29,8 @@ public class Event {
     @Column(name = "title", nullable = false)
     private String title;
 
-    @Column(name = "content")
+    @Column(name = "content", columnDefinition = "TEXT")
     private String content;
-
-    @Column(name = "code", nullable = false)
-    private String code;
 
     @Column(name = "image")
     private String image;

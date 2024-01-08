@@ -20,16 +20,13 @@ public class Review {
 
     @Id
     @GeneratedValue
-    @Column(name = "id", nullable = false, unique = true)
+    @Column(name = "id", nullable = false)
     private Long id;
-
-    @Column(name = "title", nullable = false)
-    private String title;
 
     @Column(name = "content", nullable = false)
     private String content;
 
-    @Column(name = "visited_at", columnDefinition = "TIMESTAMP")
+    @Column(name = "visited_at", columnDefinition = "DATE")
     private LocalDateTime visitedAt;
 
     @Column(name = "image")

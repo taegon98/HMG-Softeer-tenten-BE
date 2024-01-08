@@ -19,16 +19,16 @@ public class Destination {
 
     @Id
     @GeneratedValue
-    @Column(name = "id", nullable = false, unique = true)
+    @Column(name = "id", nullable = false)
     private Long id;
 
     @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "started_at", columnDefinition = "TIMESTAMP")
+    @Column(name = "started_at", columnDefinition = "DATE")
     private LocalDateTime startedAt;
 
-    @Column(name = "ended_at", columnDefinition = "TIMESTAMP")
+    @Column(name = "ended_at", columnDefinition = "DATE")
     private LocalDateTime endedAt;
 
     @Column(name = "x_coord")
