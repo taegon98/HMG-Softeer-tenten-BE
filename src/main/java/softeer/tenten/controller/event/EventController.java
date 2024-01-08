@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import softeer.tenten.dto.event.EventRequest;
 import softeer.tenten.dto.event.EventResponse;
 import softeer.tenten.global.api.ApiResponse;
+import softeer.tenten.service.S3.AwsS3Service;
 import softeer.tenten.service.event.EventService;
 
 import java.util.List;
@@ -16,6 +17,7 @@ import java.util.List;
 public class EventController {
 
     private final EventService eventService;
+    private final AwsS3Service awsS3Service;
 
     @GetMapping("/pop-up/{id}/events")
     public ResponseEntity<Object> getEventList(@PathVariable Long id) {
@@ -25,7 +27,8 @@ public class EventController {
 
     @GetMapping("/pop-up/{id}/events/{eventId}")
     public ResponseEntity<Object> getEventDetail(@PathVariable Long id, @PathVariable Long eventId) {
-        EventResponse.EventDetail event = eventService.getEventDetail(id, eventId);
+        String imageUrl = awsS3Service.getPath("callpop.png");
+        EventResponse.EventDetail event = eventService.getEventDetail(id, eventId, imageUrl);
         return ResponseEntity.ok(ApiResponse.onSuccess(event));
     }
 }
