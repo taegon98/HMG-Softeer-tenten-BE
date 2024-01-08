@@ -11,6 +11,7 @@ import softeer.tenten.global.exception.GeneralException;
 import softeer.tenten.mapper.event.EventMapper;
 import softeer.tenten.repository.event.EventRepository;
 import softeer.tenten.repository.event.UserEventRepository;
+import softeer.tenten.repository.popup.PopupRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -25,7 +26,7 @@ public class EventService {
 
     //이벤트 전체 조회
     public List<EventResponse.EventList> getEventList(Long id) {
-        Optional<Event> events = eventRepository.findAllByPopupId(id);
+        Optional<Event> events = eventRepository.findAllByPopup_Id(id);
 
         if (events.isEmpty()) {
             throw new GeneralException(StatusCode.NOT_FOUND);
