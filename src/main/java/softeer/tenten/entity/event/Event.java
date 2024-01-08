@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import softeer.tenten.entity.popup.Popup;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,4 +40,8 @@ public class Event {
 
     @OneToMany(mappedBy = "event", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<UserEvent> userEvents = new ArrayList<>();
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "popup_id")
+    private Popup popup;
 }

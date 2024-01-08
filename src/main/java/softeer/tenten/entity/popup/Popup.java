@@ -10,6 +10,7 @@ import softeer.tenten.entity.criteria.Category;
 import softeer.tenten.entity.criteria.PopupTag;
 import softeer.tenten.entity.area.Destination;
 import softeer.tenten.entity.area.Option;
+import softeer.tenten.entity.event.Event;
 import softeer.tenten.entity.waiting.Waiting;
 import softeer.tenten.entity.review.Review;
 
@@ -85,4 +86,7 @@ public class Popup {
 
     @OneToMany(mappedBy = "popup", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Review> reviews = new ArrayList<>();
+
+    @OneToMany(mappedBy = "popup", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Event> events = new ArrayList<>();
 }
