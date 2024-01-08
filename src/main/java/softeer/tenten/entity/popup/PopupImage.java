@@ -17,7 +17,7 @@ public class PopupImage {
 
     @Id
     @GeneratedValue
-    @Column(name = "id", nullable = false, unique = true)
+    @Column(name = "id", nullable = false)
     private Long id;
 
     @Column(name = "path")

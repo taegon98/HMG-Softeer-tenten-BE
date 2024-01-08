@@ -20,10 +20,10 @@ public class Vote {
 
     @Id
     @GeneratedValue
-    @Column(name = "id", nullable = false, unique = true)
+    @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "created_at", columnDefinition = "TIMESTAMP")
+    @Column(name = "created_at", columnDefinition = "DATE")
     private LocalDateTime createdAt;
 
     @ManyToOne(fetch = FetchType.LAZY)
