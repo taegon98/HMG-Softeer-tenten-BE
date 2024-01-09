@@ -9,10 +9,10 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class AwsS3Service {
 
-    private final AmazonS3Client amazonS3Client;
-    @Value("${cloud.aws.s3.bucket}")
-    private String bucketName;
-    public String getPath(String fileName) {
-        return amazonS3Client.getUrl(bucketName, fileName).toString();
-    }
+//    private final AmazonS3Client amazonS3Client;
+//    @Value("${cloud.aws.s3.bucket}")
+//    private String bucketName;
+//    public String getPath(String fileName) {
+//        return amazonS3Client.getUrl(bucketName, fileName).toString();
+//    }
 }

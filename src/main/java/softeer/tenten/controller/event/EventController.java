@@ -27,7 +27,6 @@ public class EventController {
 
     @GetMapping("/pop-up/{id}/events/{eventId}")
     public ResponseEntity<Object> getEventDetail(@PathVariable Long id, @PathVariable Long eventId) {
-        String imageUrl = awsS3Service.getPath("callpop.png");
         EventResponse.EventDetail event = eventService.getEventDetail(id, eventId);
         return ResponseEntity.ok(ApiResponse.onSuccess(event));
     }
