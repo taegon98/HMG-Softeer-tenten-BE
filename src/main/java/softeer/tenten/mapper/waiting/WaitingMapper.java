@@ -5,11 +5,15 @@ import softeer.tenten.entity.waiting.Waiting;
 import softeer.tenten.dto.popup.waiting.WaitingResponse;
 import softeer.tenten.entity.user.User;
 
+import java.time.LocalDateTime;
+
 public class WaitingMapper {
     public static Waiting toWaiting(User user, Popup popup){
         return Waiting.builder()
                 .user(user)
                 .popup(popup)
+                .createdAt(LocalDateTime.now())
+                .status(1)
                 .build();
     }
 

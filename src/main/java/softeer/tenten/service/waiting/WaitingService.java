@@ -64,6 +64,6 @@ public class WaitingService {
     }
 
     private boolean existsWaiting(Long popUpId, String userId){
-        return waitingRepository.existsByPopupIdAndUserUserId(popUpId, userId);
+        return waitingRepository.existsByPopupIdAndUserUserId(popUpId, userId, 1);
     }
 }
