@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import softeer.tenten.entity.popup.Popup;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
@@ -26,10 +27,10 @@ public class Destination {
     private String name;
 
     @Column(name = "started_at", columnDefinition = "DATE")
-    private LocalDateTime startedAt;
+    private LocalDate startedAt;
 
     @Column(name = "ended_at", columnDefinition = "DATE")
-    private LocalDateTime endedAt;
+    private LocalDate endedAt;
 
     @Column(name = "x_coord")
     private Double xCoord;

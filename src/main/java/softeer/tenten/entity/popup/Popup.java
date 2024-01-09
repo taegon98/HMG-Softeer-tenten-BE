@@ -14,7 +14,7 @@ import softeer.tenten.entity.event.Event;
 import softeer.tenten.entity.waiting.Waiting;
 import softeer.tenten.entity.review.Review;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,10 +44,10 @@ public class Popup {
     private String otherImage;
 
     @Column(name = "started_at", columnDefinition = "DATE")
-    private LocalDateTime startedAt;
+    private LocalDate startedAt;
 
     @Column(name = "ended_at", columnDefinition = "DATE")
-    private LocalDateTime endedAt;
+    private LocalDate endedAt;
 
     @Column(name = "capacity")
     private Integer capacity;
@@ -60,6 +60,9 @@ public class Popup {
 
     @Column(name = "scrap")
     private Integer scrap;
+
+    @Column(name = "distance")
+    private Double distance;
 
     @OneToMany(mappedBy = "popup", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Destination> destination = new ArrayList<>();
@@ -89,4 +92,8 @@ public class Popup {
 
     @OneToMany(mappedBy = "popup", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Event> events = new ArrayList<>();
+
+    public void calculateDistance(Double distance){
+        this.distance = distance;
+    }
 }
