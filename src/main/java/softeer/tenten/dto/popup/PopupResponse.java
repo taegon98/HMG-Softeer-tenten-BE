@@ -11,6 +11,7 @@ public class PopupResponse {
     @Builder
     @AllArgsConstructor
     public static class PopupList {
+        private final Long id;
         private final String category;
         private final String brand;
         private final String title;
