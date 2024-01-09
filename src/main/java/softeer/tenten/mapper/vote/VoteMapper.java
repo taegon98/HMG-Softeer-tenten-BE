@@ -5,6 +5,8 @@ import softeer.tenten.entity.area.Option;
 import softeer.tenten.entity.vote.Vote;
 import softeer.tenten.entity.user.User;
 
+import java.time.LocalDateTime;
+
 public class VoteMapper {
     public static VoteResponse.RegisterVote toVoteOption(Option option, Integer result){
         return VoteResponse.RegisterVote.builder()
@@ -18,6 +20,7 @@ public class VoteMapper {
         return Vote.builder()
                 .user(user)
                 .option(option)
+                .createdAt(LocalDateTime.now())
                 .build();
     }
 }

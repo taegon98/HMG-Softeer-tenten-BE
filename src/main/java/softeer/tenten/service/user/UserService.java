@@ -2,6 +2,7 @@ package softeer.tenten.service.user;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import softeer.tenten.dto.user.UserRequest;
 import softeer.tenten.dto.user.UserResponse;
 import softeer.tenten.entity.user.User;
@@ -14,6 +15,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
+@Transactional(readOnly = true)
 public class UserService {
     private final UserRepository userRepository;
 

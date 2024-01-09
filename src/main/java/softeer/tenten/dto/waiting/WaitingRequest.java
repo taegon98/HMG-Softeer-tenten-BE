@@ -1,14 +1,13 @@
 package softeer.tenten.dto.waiting;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
 public class WaitingRequest {
     @Getter
     @Builder
-    @RequiredArgsConstructor
+    @NoArgsConstructor
+    @AllArgsConstructor
     public static class RegisterWaiting{
-        private final String userId;
+        private String userId;
     }
 }
