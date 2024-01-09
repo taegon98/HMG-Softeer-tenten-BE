@@ -7,8 +7,8 @@ import java.time.LocalDateTime;
 import java.util.Optional;
 
 public interface WaitingRepository extends JpaRepository<Waiting, Long> {
-    boolean existsByPopup_IdAndUser_UserId(Long popUpId, String userId);
-    Optional<Waiting> findByPopup_IdAndUser_UserId(Long popUpId, String userId);
-    Integer countAllByPopup_IdAndCreatedAtBetween(Long popUpId, LocalDateTime lastDay, LocalDateTime waitingTime);
-    Integer countAllByPopup_IdAndStatusAndCreatedAtBefore(Long popUpId, Integer status, LocalDateTime waitingTime);
+    boolean existsByPopupIdAndUserUserId(Long popUpId, String userId);
+    Optional<Waiting> findByPopupIdAndUserUserId(Long popUpId, String userId);
+    Integer countAllByPopupIdAndCreatedAtBetween(Long popUpId, LocalDateTime lastDay, LocalDateTime waitingTime);
+    Integer countAllByPopupIdAndStatusAndCreatedAtBefore(Long popUpId, Integer status, LocalDateTime waitingTime);
 }

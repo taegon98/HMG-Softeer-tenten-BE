@@ -41,8 +41,12 @@ public class VoteService {
 
     @Transactional
     public Long createPopUpVote(Long popUpId, VoteRequest.VoteOption voteOption){
-        if(existsOptionByPopUpIdAndOptionId(popUpId, voteOption.getOptionId())){
-            throw new GeneralException(StatusCode.BAD_REQUEST);
+        List<Option> options = optionRepository.findAllByPopupId(popUpId);
+
+        for(Option option: options) {
+            if (existsVote(option.getId(), voteOption.getUserId())) {
+                throw new GeneralException(StatusCode.BAD_REQUEST);
+            }
         }
 
         User user = userService.getUserByUserId(voteOption.getUserId());
@@ -55,18 +59,19 @@ public class VoteService {
         return vote.getId();
     }
 
-    private boolean existsOptionByPopUpIdAndOptionId(Long popUpId, Long optionId){
-        return optionRepository.existsByPopup_IdAndId(popUpId, optionId);
+    private boolean existsVote(Long optionId, String userId){
+        return voteRepository.existsByOptionIdAndUserUserId(optionId, userId);
     }
+
     private Option getOptionByOptionId(Long optionId){
         return optionRepository.findById(optionId).orElseThrow(() -> new GeneralException(StatusCode.NOT_FOUND));
     }
 
     private List<Option> getOptionsByPopUpId(Long id){
-        return optionRepository.findAllByPopup_Id(id);
+        return optionRepository.findAllByPopupId(id);
     }
 
     private Integer getVoteResult(Long id){
-        return voteRepository.countAllByOption_Id(id);
+        return voteRepository.countAllByOptionId(id);
     }
 }
