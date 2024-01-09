@@ -53,17 +53,17 @@ public class WaitingService {
         LocalDateTime waitingTime = waiting.getCreatedAt();
         LocalDateTime lastDay = LocalDateTime.of(LocalDate.now().minusDays(1), LocalTime.MIDNIGHT);
 
-        Integer waitingNumber = waitingRepository.countAllByPopup_IdAndCreatedAtBetween(popUpId, lastDay, waitingTime);
-        Integer orderNumber = waitingRepository.countAllByPopup_IdAndStatusAndCreatedAtBefore(popUpId, 1, waitingTime);
+        Integer waitingNumber = waitingRepository.countAllByPopupIdAndCreatedAtBetween(popUpId, lastDay, waitingTime);
+        Integer orderNumber = waitingRepository.countAllByPopupIdAndStatusAndCreatedAtBefore(popUpId, 1, waitingTime);
 
         return WaitingMapper.toWaitingInformation(waiting.getId(), waitingNumber, orderNumber);
     }
 
     public Waiting getWaiting(Long popUpId, String userId){
-        return waitingRepository.findByPopup_IdAndUser_UserId(popUpId, userId).orElseThrow(() -> new GeneralException(StatusCode.NOT_FOUND));
+        return waitingRepository.findByPopupIdAndUserUserId(popUpId, userId).orElseThrow(() -> new GeneralException(StatusCode.NOT_FOUND));
     }
 
     private boolean existsWaiting(Long popUpId, String userId){
-        return waitingRepository.existsByPopup_IdAndUser_UserId(popUpId, userId);
+        return waitingRepository.existsByPopupIdAndUserUserId(popUpId, userId);
     }
 }
