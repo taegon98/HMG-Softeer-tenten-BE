@@ -14,6 +14,7 @@ public class PopupMapper {
         String duration = getString(popup);
 
         return PopupResponse.PopupList.builder()
+                .id(popup.getId())
                 .category(popup.getCategory().getName())
                 .brand(popup.getBrand().getName())
                 .title(popup.getTitle())
