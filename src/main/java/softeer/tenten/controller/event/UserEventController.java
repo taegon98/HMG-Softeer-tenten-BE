@@ -1,6 +1,7 @@
 package softeer.tenten.controller.event;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import softeer.tenten.dto.event.EventRequest;
@@ -10,6 +11,7 @@ import softeer.tenten.service.event.UserEventService;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api")
+@Slf4j
 public class UserEventController {
 
     private final UserEventService userEventService;

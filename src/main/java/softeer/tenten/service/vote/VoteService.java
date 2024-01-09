@@ -1,8 +1,8 @@
 package softeer.tenten.service.vote;
 
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import softeer.tenten.dto.vote.VoteRequest;
 import softeer.tenten.dto.vote.VoteResponse;
 import softeer.tenten.entity.area.Option;
@@ -19,13 +19,14 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Transactional(readOnly = true)
 public class VoteService {
     private final VoteRepository voteRepository;
     private final OptionRepository optionRepository;
 
     private final UserService userService;
 
-    @Transactional
+    @Transactional(readOnly = false)
     public List<VoteResponse.RegisterVote> getPopUpVoteOption(Long id){
         List<Option> options = getOptionsByPopUpId(id);
 
@@ -41,7 +42,7 @@ public class VoteService {
     @Transactional
     public Long createPopUpVote(Long popUpId, VoteRequest.VoteOption voteOption){
         if(existsOptionByPopUpIdAndOptionId(popUpId, voteOption.getOptionId())){
-            throw new GeneralException(StatusCode.NOT_FOUND);
+            throw new GeneralException(StatusCode.BAD_REQUEST);
         }
 
         User user = userService.getUserByUserId(voteOption.getUserId());
