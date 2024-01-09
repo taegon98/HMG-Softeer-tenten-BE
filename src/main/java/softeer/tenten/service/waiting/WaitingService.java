@@ -31,7 +31,7 @@ public class WaitingService {
 
     @Transactional
     @Lock(LockModeType.PESSIMISTIC_READ)
-    public Long createWaiting(Long popUpId, WaitingRequest.RegisterWaiting registerWaiting){
+    public WaitingResponse.WaitingInformation createWaiting(Long popUpId, WaitingRequest.RegisterWaiting registerWaiting){
         if(existsWaiting(popUpId, registerWaiting.getUserId())){
             throw new GeneralException(StatusCode.BAD_REQUEST);
         }
@@ -43,7 +43,7 @@ public class WaitingService {
 
         waitingRepository.save(waiting);
 
-        return waiting.getId();
+        return getWaitingInformation(popUpId, registerWaiting.getUserId());
     }
 
     @Transactional
@@ -60,10 +60,10 @@ public class WaitingService {
     }
 
     public Waiting getWaiting(Long popUpId, String userId){
-        return waitingRepository.findByPopupIdAndUserUserId(popUpId, userId).orElseThrow(() -> new GeneralException(StatusCode.NOT_FOUND));
+        return waitingRepository.findByPopupIdAndUserUserIdAndStatus(popUpId, userId, 1).orElseThrow(() -> new GeneralException(StatusCode.NOT_FOUND));
     }
 
-    private boolean existsWaiting(Long popUpId, String userId){
-        return waitingRepository.existsByPopupIdAndUserUserId(popUpId, userId, 1);
+    public boolean existsWaiting(Long popUpId, String userId){
+        return waitingRepository.existsByPopupIdAndUserUserIdAndStatus(popUpId, userId, 1);
     }
 }
