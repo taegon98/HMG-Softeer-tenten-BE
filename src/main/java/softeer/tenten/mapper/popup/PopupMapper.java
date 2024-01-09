@@ -1,13 +1,16 @@
 package softeer.tenten.mapper.popup;
 
+import lombok.extern.slf4j.Slf4j;
 import softeer.tenten.dto.popup.PopupResponse;
+import softeer.tenten.entity.area.Destination;
 import softeer.tenten.entity.popup.Popup;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
+@Slf4j
 public class PopupMapper {
 
-    public static PopupResponse.PopupList toPopupResponse(Popup popup, Double distance) {
+    public static PopupResponse.PopupList toPopupResponse(Popup popup) {
         String duration = getString(popup);
 
         return PopupResponse.PopupList.builder()
@@ -15,10 +18,9 @@ public class PopupMapper {
                 .brand(popup.getBrand().getName())
                 .title(popup.getTitle())
                 .destinations(popup.getDestination().stream()
-                        .map(destination -> destination.getName())
+                        .map(Destination::getName)
                         .toList())
                 .duration(duration)
-                .distance(distance)
                 .build();
     }
 
@@ -35,7 +37,7 @@ public class PopupMapper {
                         .toList())
                 .status(popup.getStatus())
                 .destination(popup.getDestination().stream()
-                        .map(destination -> destination.getName())
+                        .map(Destination::getName)
                         .toList())
                 .duration(duration)
                 .capacity(popup.getCapacity())
@@ -46,9 +48,8 @@ public class PopupMapper {
     }
 
     private static String getString(Popup popup) {
-        LocalDateTime startedAt = popup.getStartedAt();
-        LocalDateTime endedAt = popup.getEndedAt();
-        String duration = startedAt.getMonthValue() + "월 " + startedAt.getDayOfMonth() + "일 ~ " + endedAt.getMonthValue() + "월 " + endedAt.getDayOfMonth() + "일";
-        return duration;
+        LocalDate startedAt = popup.getStartedAt();
+        LocalDate endedAt = popup.getEndedAt();
+        return startedAt.getMonthValue() + "월 " + startedAt.getDayOfMonth() + "일 ~ " + endedAt.getMonthValue() + "월 " + endedAt.getDayOfMonth() + "일";
     }
 }
