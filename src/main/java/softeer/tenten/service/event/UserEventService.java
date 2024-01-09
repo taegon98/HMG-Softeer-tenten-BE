@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import softeer.tenten.dto.event.EventRequest;
 import softeer.tenten.entity.event.Event;
 import softeer.tenten.entity.event.UserEvent;
 import softeer.tenten.entity.user.User;
@@ -26,9 +27,9 @@ public class UserEventService {
 
     //이벤트 참여
     @Transactional(readOnly = false)
-    public void participateEvent(Long id, Long eventId, String code) {
-        if (code.equals("938-203-103")) {
-            Optional<User> user = userRepository.findById(id);
+    public void participateEvent(Long id, Long eventId, EventRequest.EventParticipation eventParticipation) {
+        if (eventParticipation.getCode().equals("938-203-103")) {
+            Optional<User> user = userRepository.findUserByUserId(eventParticipation.getUserId());
             Optional<Event> event = eventRepository.findById(eventId);
 
             if (user.isEmpty() || event.isEmpty()) {
