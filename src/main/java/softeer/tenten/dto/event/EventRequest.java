@@ -1,15 +1,14 @@
 package softeer.tenten.dto.event;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
+import lombok.*;
 
 public class EventRequest {
 
     @Getter
     @Builder
+    @NoArgsConstructor
     @AllArgsConstructor
     public static class EventCode {
-        private final String code;
+        private String code;
     }
 }
