@@ -2,8 +2,6 @@ package softeer.tenten.service.popup;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.hibernate.query.Order;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import softeer.tenten.dto.popup.PopupResponse;
@@ -15,8 +13,6 @@ import softeer.tenten.mapper.popup.PopupMapper;
 import softeer.tenten.repository.popup.PopupRepository;
 import softeer.tenten.repository.user.UserRepository;
 
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,12 +29,18 @@ public class PopupService {
     public List<PopupResponse.PopupList> getPopupList() {
         List<Popup> popups = popupRepository.findAll();
 
+        popups.forEach(popup -> {
+            popup.calculateDistance(getDistance(popup));
+        });
+
+        List<Popup> popupList = popupRepository.findAllByOrderByDistanceAsc();
+
         if (popups.isEmpty()) {
             throw new GeneralException(StatusCode.NOT_FOUND);
         }
 
-        return popups.stream()
-                .map(popup -> PopupMapper.toPopupResponse(popup, getDistance(popup)))
+        return popupList.stream()
+                .map(PopupMapper::toPopupResponse)
                 .toList();
     }
 
@@ -59,20 +61,19 @@ public class PopupService {
 
     public Double getDistance(Popup popup){
         Optional<User> userOptional = userRepository.findById(1L);
+
+        if(userOptional.isEmpty()){
+            throw new GeneralException(StatusCode.NOT_FOUND);
+        }
+
         Double xCoord = userOptional.get().getXCoord();
         Double yCoord = userOptional.get().getYCoord();
 
-        Double distance = Math.sqrt(
-                Math.pow(xCoord - popup.getDestination().get(0).getXCoord(), 2) + Math.pow(yCoord - popup.getDestination().get(0).getYCoord(), 2));
+        if (popup.getDestination().isEmpty()) {
+            return 9999.9999;
+        }
 
-        return distance;
-    }
-
-    public List<PopupResponse.PopupList> sortPopupsByDistance(List<PopupResponse.PopupList> popups) {
-        Comparator<PopupResponse.PopupList> distance = Comparator.comparingDouble(PopupResponse.PopupList::getDistance);
-
-        Collections.sort(popups, distance);
-
-        return popups;
+        return Math.sqrt(Math.pow(
+                xCoord - popup.getDestination().get(0).getXCoord(), 2) + Math.pow(yCoord - popup.getDestination().get(0).getYCoord(), 2));
     }
 }
