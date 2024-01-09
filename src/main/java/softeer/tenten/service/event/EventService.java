@@ -42,7 +42,7 @@ public class EventService {
     }
 
     //이벤트 상세 조회
-    public EventResponse.EventDetail getEventDetail(Long id, Long eventId) {
+    public EventResponse.EventDetail getEventDetail(Long id, Long eventId, String userId) {
 
         Optional<Event> event = eventRepository.findAllByPopupIdAndId(id, eventId);
 
@@ -50,7 +50,7 @@ public class EventService {
             throw new GeneralException(StatusCode.NOT_FOUND);
         }
 
-        Optional<UserEvent> userEvent = userEventRepository.findByUserIdAndEventId(id, eventId);
+        Optional<UserEvent> userEvent = userEventRepository.findByUserUserIdAndEventId(userId, eventId);
 
         if (userEvent.isEmpty()) { //Event에 참여하지 않은 경우
             return EventMapper.toEventDetailResponse(event.get(), 0);

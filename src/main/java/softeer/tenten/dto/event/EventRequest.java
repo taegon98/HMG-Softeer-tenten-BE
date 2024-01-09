@@ -8,7 +8,8 @@ public class EventRequest {
     @Builder
     @NoArgsConstructor
     @AllArgsConstructor
-    public static class EventCode {
+    public static class EventParticipation {
+        private String userId;
         private String code;
     }
 }

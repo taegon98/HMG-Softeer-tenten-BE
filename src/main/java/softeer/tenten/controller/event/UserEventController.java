@@ -17,8 +17,8 @@ public class UserEventController {
     private final UserEventService userEventService;
 
     @PostMapping("/pop-up/{id}/events/{eventId}")
-    public ResponseEntity<Object> participateEvent(@PathVariable Long id, @PathVariable Long eventId, @RequestBody EventRequest.EventCode eventCode) {
-        userEventService.participateEvent(id, eventId, eventCode.getCode());
+    public ResponseEntity<Object> participateEvent(@PathVariable Long id, @PathVariable Long eventId, @RequestBody EventRequest.EventParticipation eventParticipation) {
+        userEventService.participateEvent(id, eventId, eventParticipation);
         return ResponseEntity.ok(ApiResponse.onSuccess("참여 성공"));
     }
 }
