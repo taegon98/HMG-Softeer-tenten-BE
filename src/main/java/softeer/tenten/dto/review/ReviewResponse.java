@@ -10,8 +10,7 @@ public class ReviewResponse {
     @Builder
     @AllArgsConstructor
     public static class ReviewList {
-
-        private final String title;
+        private final String nickname;
         private final String destination;
         private final String date;
         private final String content;
