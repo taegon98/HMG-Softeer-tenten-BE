@@ -7,6 +7,7 @@ public class EventMapper {
 
     public static EventResponse.EventList toEventResponse(Event event){
         return EventResponse.EventList.builder()
+                .id(event.getId())
                 .name(event.getName())
                 .title(event.getTitle())
                 .image(event.getImage())

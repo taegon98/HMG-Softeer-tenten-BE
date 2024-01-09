@@ -10,6 +10,7 @@ public class EventResponse {
     @Builder
     @AllArgsConstructor
     public static class EventList {
+        private final Long id;
         private final String name;
         private final String title;
         private final String image;
