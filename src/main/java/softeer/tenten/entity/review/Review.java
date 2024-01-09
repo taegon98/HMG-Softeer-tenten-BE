@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import softeer.tenten.entity.popup.Popup;
 import softeer.tenten.entity.user.User;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
@@ -27,7 +28,7 @@ public class Review {
     private String content;
 
     @Column(name = "visited_at", columnDefinition = "DATE")
-    private LocalDateTime visitedAt;
+    private LocalDate visitedAt;
 
     @Column(name = "image")
     private String image;

@@ -28,7 +28,7 @@ public class EventService {
 
     //이벤트 전체 조회
     public List<EventResponse.EventList> getEventList(Long id) {
-        Optional<Event> events = eventRepository.findAllByPopupId(id);
+        List<Event> events = eventRepository.findAllByPopupId(id);
 
         if (events.isEmpty()) {
             throw new GeneralException(StatusCode.NOT_FOUND);
@@ -40,9 +40,9 @@ public class EventService {
     }
 
     //이벤트 상세 조회
-    public EventResponse.EventDetail getEventDetail(Long id, Long eventId, String imageUrl) {
+    public EventResponse.EventDetail getEventDetail(Long id, Long eventId) {
 
-        Optional<Event> event = eventRepository.findById(eventId);
+        Optional<Event> event = eventRepository.findAllByPopupIdAndId(id, eventId);
 
         if (event.isEmpty()) {
             throw new GeneralException(StatusCode.NOT_FOUND);
@@ -51,10 +51,10 @@ public class EventService {
         Optional<UserEvent> userEvent = userEventRepository.findByUserIdAndEventId(id, eventId);
 
         if (userEvent.isEmpty()) { //Event에 참여하지 않은 경우
-            return EventMapper.toEventDetailResponse(event.get(), 0, imageUrl);
+            return EventMapper.toEventDetailResponse(event.get(), 0);
         }
         else { //Event에 참여한 경우
-            return EventMapper.toEventDetailResponse(event.get(), 1, imageUrl);
+            return EventMapper.toEventDetailResponse(event.get(), 1);
         }
     }
 }

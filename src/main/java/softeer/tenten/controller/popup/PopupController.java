@@ -22,8 +22,7 @@ public class PopupController {
 
     @GetMapping("/pop-up")
     public ResponseEntity<Object> getPopups(){
-        List<PopupResponse.PopupList> popupList = popupService.getPopupList();
-        List<PopupResponse.PopupList> popups = popupService.sortPopupsByDistance(popupList);
+        List<PopupResponse.PopupList> popups = popupService.getPopupList();
         return ResponseEntity.ok(ApiResponse.onSuccess(popups));
     }
 
