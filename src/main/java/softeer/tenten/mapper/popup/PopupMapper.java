@@ -4,13 +4,15 @@ import lombok.extern.slf4j.Slf4j;
 import softeer.tenten.dto.popup.PopupResponse;
 import softeer.tenten.entity.area.Destination;
 import softeer.tenten.entity.popup.Popup;
+import softeer.tenten.entity.popup.PopupImage;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Slf4j
 public class PopupMapper {
 
-    public static PopupResponse.PopupList toPopupResponse(Popup popup) {
+    public static PopupResponse.PopupList toPopupResponse(Popup popup, String image) {
         String duration = getString(popup);
 
         return PopupResponse.PopupList.builder()
@@ -22,10 +24,12 @@ public class PopupMapper {
                         .map(Destination::getName)
                         .toList())
                 .duration(duration)
+                .image(image)
+                .status(popup.getStatus())
                 .build();
     }
 
-    public static PopupResponse.PopupDetail toPopupDetailResponse(Popup popup){
+    public static PopupResponse.PopupDetail toPopupDetailResponse(Popup popup, List<PopupImage> popupImages){
         String duration = getString(popup);
 
         return PopupResponse.PopupDetail.builder()
@@ -45,6 +49,10 @@ public class PopupMapper {
                 .carType(popup.getCarType())
                 .contentImage(popup.getContentImage())
                 .otherImage(popup.getOtherImage())
+                .images(popupImages.stream()
+                        .map(PopupImage::getPath)
+                        .toList())
+                .status(popup.getStatus())
                 .build();
     }
 

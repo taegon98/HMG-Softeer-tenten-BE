@@ -17,6 +17,8 @@ public class PopupResponse {
         private final String title;
         private final List<String> destinations;
         private final String duration;
+        private final String image;
+        private final Integer status;
     }
 
     @Getter
@@ -35,5 +37,6 @@ public class PopupResponse {
         private final String carType;
         private final String contentImage;
         private final String otherImage;
+        private final List<String> images;
     }
 }

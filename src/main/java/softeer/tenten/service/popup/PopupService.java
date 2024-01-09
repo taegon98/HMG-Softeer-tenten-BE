@@ -6,14 +6,17 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import softeer.tenten.dto.popup.PopupResponse;
 import softeer.tenten.entity.popup.Popup;
+import softeer.tenten.entity.popup.PopupImage;
 import softeer.tenten.entity.user.User;
 import softeer.tenten.global.api.status.StatusCode;
 import softeer.tenten.global.exception.GeneralException;
 import softeer.tenten.mapper.popup.PopupMapper;
+import softeer.tenten.repository.popup.PopupImageRepository;
 import softeer.tenten.repository.popup.PopupRepository;
 import softeer.tenten.repository.user.UserRepository;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -23,6 +26,7 @@ import java.util.Optional;
 public class PopupService {
 
     private final PopupRepository popupRepository;
+    private final PopupImageRepository popupImageRepository;
     private final UserRepository userRepository;
 
     //팝업 전체 조회
@@ -40,7 +44,9 @@ public class PopupService {
         }
 
         return popupList.stream()
-                .map(PopupMapper::toPopupResponse)
+                .map((popup) -> PopupMapper.toPopupResponse(popup,
+                        Objects.requireNonNull(popupImageRepository.findFirstByPopupId(popup.getId())
+                                .orElse(null)).getPath()))
                 .toList();
     }
 
@@ -52,7 +58,9 @@ public class PopupService {
             throw new GeneralException(StatusCode.NOT_FOUND);
         }
 
-        return PopupMapper.toPopupDetailResponse(popup.get());
+        List<PopupImage> popupImages = popupImageRepository.findAllByPopupId(popup.get().getId());
+
+        return PopupMapper.toPopupDetailResponse(popup.get(), popupImages);
     }
 
     public Popup getPopUpByPopUpId(Long popUpId){
