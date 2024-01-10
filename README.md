@@ -1,6 +1,6 @@
 # <img width="30" alt="Group 1000003635" src="https://github.com/softeerbootcamp-3nd/softee5-tenten-BE/assets/102223636/6619b13d-0e84-423e-8bde-65d4f7e80147"> 어디든지 이동할 수 있는 팝업카 플랫폼, 콜팝
 
-![readme_mockup2](https://github.com/softeerbootcamp-3nd/softee5-tenten-BE/assets/102223636/6c56c406-fe41-4c81-b5d1-019457ca1574)
+<img width="1920" alt="Slide 16_9 - 4-2" src="https://github.com/softeerbootcamp-3nd/softee5-tenten-BE/assets/102223636/fc3a5209-4ecd-4b7d-ab97-b1339369c763">
 
 
 <br>
@@ -18,7 +18,7 @@
 
 <div align="center">
 
-|**👨‍💻김형민**|**🧑‍🎤박지원**|**👩‍💼송지희**|**👨‍💻이태곤**|**👩‍💻윤유정**|
+|**👨‍💻김형민**|**👩🏻‍🎨박지원**|**👩‍💼송지희**|**👨‍💻이태곤**|**👩‍💻윤유정**|
 |:------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------------------------------------------------------:|
 |<img src="https://github.com/taegon98/softee5-tenten-BE/assets/102223636/b19791cf-59d4-4d89-beba-6cea0096b05c" height=180 width=150> <br/> |<img src="https://github.com/taegon98/softee5-tenten-BE/assets/102223636/97fda033-59dd-4c91-8425-718e5116c692" height=180 width=150> <br/>| <img src="https://github.com/taegon98/softee5-tenten-BE/assets/102223636/2839b2ed-bd63-4be0-a88c-90ef00e31fd1" height=180 width=150> <br/>| <img src="https://github.com/taegon98/softee5-tenten-BE/assets/102223636/85749d8a-b427-47e3-82a0-ed8ec2b9777b" height=180 width=150> <br/> |<img src="https://github.com/taegon98/softee5-tenten-BE/assets/102223636/6d1c399e-17e0-4051-83e5-117dd212d4cc" height=180 width=150> <br/> |
 |**Backend/Android**|**Design**|**PM**|**Backend/Infra**|**Android**|
@@ -226,18 +226,23 @@
 <br>
 
 ## 5. System Architecture
-<img width="1921" alt="Slide 16_9 - 18" src="https://github.com/softeerbootcamp-3nd/softee5-tenten-BE/assets/102223636/32ad5d79-3873-4d92-a7dd-19e1e57507d6">
+<img width="1921" alt="Slide 16_9 - 18-2" src="https://github.com/softeerbootcamp-3nd/softee5-tenten-BE/assets/102223636/b26af373-2128-497d-8ac8-fc17edaae0c9">
 
 <br>
 
-## 6. 역할 분담
+## 6. Information Architecture
+<img width="1920" alt="Slide 16_9 - 5" src="https://github.com/softeerbootcamp-3nd/softee5-tenten-BE/assets/102223636/f450a10a-e0dd-4d40-b05d-9c49454d4e1a">
+
+<br>
+
+## 7. 역할 분담
 
 ### 👨‍💻김형민
 
 - **Backend**: 로그인, 투표 기능, 투표 결과 조회, 웨이팅 기능
 - **Android**: 로그인 화면, 이벤트 조회 화면, 이벤트 상세 페이지 화면, 이벤트 참여코드 입력 화면, 웨이팅 등록 화면, 투표 화면
 
-### 🧑‍🎤박지원
+### 👩🏻‍🎨박지원
 
 - UI 디자인
 - 로고, 브랜딩 등 시각화 작업
@@ -265,7 +270,7 @@
 
 <br>
 
-## 7. 개발 기간 및 작업 관리
+## 8. 개발 기간 및 작업 관리
 
 ### 개발 기간
 
@@ -278,11 +283,11 @@
 ### 작업 관리
 
 - GitHub Issues 생성, Github wiki 및 Slack을 통해 진행 상황을 공유했습니다.
-- 워밍업 프로젝트가 진행되는 5일동안 매일 아침 10시 회의를 진행하며, 진행 상황과 오늘 할 일을 공유하고 Notiond에 회의 내용을 기록했습니다.
+- 워밍업 프로젝트가 진행되는 5일동안 매일 아침 10시 회의를 진행하며, 진행 상황과 오늘 할 일을 공유하고 Notion에 회의 내용을 기록했습니다.
 
 <br>
 
-## 8. 페이지별 기능
+## 9. 페이지별 기능
 
 ### [로그인]
 - 사용자 아이디와 비밀번호를 입력하여 로그인을 진행합니다.
@@ -345,7 +350,7 @@
 
 | 이벤트 전체 조회 | 이벤트 상세 조회 | 이벤트 참여 코드 입력 화면 |
 |----------|----------|----------|
-|<img width="360" alt="상세페이지 - 이벤트" src="https://github.com/softeerbootcamp-3nd/softee5-tenten-BE/assets/102223636/ecd6f38f-d1ca-4b31-9a68-53f011332ae1">|<img width="361" alt="상세페이지 - 이벤트 - 상세 - 참여 인증 모달" src="https://github.com/softeerbootcamp-3nd/softee5-tenten-BE/assets/102223636/e97509e4-c5a9-40fc-9733-a3860330cac8">|<img width="361" alt="상세페이지 - 이벤트 - 상세 - 참여 인증 모달 - 입력-2" src="https://github.com/softeerbootcamp-3nd/softee5-tenten-BE/assets/102223636/16274a4d-82ee-4c9d-8e60-c840645e0b7c">|
+|<img width="360" alt="상세페이지 - 이벤트" src="https://github.com/softeerbootcamp-3nd/softee5-tenten-BE/assets/102223636/ecd6f38f-d1ca-4b31-9a68-53f011332ae1">|<img width="361" alt="상세페이지 - 이벤트 - 상세 - 참여 인증 모달" src="https://github.com/softeerbootcamp-3nd/softee5-tenten-BE/assets/102223636/e97509e4-c5a9-40fc-9733-a3860330cac8">|<img width="361" alt="상세페이지 - 이벤트 - 상세 - 참여 인증 모달 - 입력-2" src="https://github.com/softeerbootcamp-3nd/softee5-tenten-BE/assets/102223636/16274a4d-82ee-4c9d-8e60-c840645e0b7c">|
 
 
 
@@ -358,10 +363,9 @@
 |<img width="360" alt="상세페이지 - 리뷰" src="https://github.com/softeerbootcamp-3nd/softee5-tenten-BE/assets/102223636/edcc9b2d-3299-4b68-97a0-bce975a18a3d">|
 
 
-
 <br>
 
-## 9. Trouble Shooting 🚀
+## 10. Trouble Shooting 🚀
 
 - ### **@RequestBody가 선언된 객체의 final field 이슈**
   - 컨트롤러에서 @RequestBody를 사용할 경우달 해당 객체는 내장된 Jackson라이브러리를 통해 json을 자바 객체로 변환된다.
@@ -386,7 +390,7 @@
 
 <br>
 
-## 10. 프로젝트 후기
+## 11. 프로젝트 후기
 
 ### 👨‍💻김형민
 
@@ -400,7 +404,7 @@
 
 <br>
 
-### 🧑‍🎤박지원
+### 👩🏻‍🎨박지원
 
 일주일간 인텐시브하게 기획, 디자인, 개발까지 진행되는 프로젝트를 경험해보며 짧은 기간 내에서 목표를 세우고, 마일스톤을 쪼개가며 협업하는 법을 배웠습니다.
 모두의 생각과 관점이 다른 만큼, 합의를 이뤄내고 최선의 목표로 나아가는 과정이 의미있었습니다.
