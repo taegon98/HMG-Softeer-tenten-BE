@@ -14,8 +14,8 @@ public class VoteController {
     private final VoteService voteService;
 
     @GetMapping("/{id}/vote")
-    public ResponseEntity<Object> getPopUpVote(@PathVariable Long id){
-        return ResponseEntity.ok(ApiResponse.onSuccess(voteService.getPopUpVoteOption(id)));
+    public ResponseEntity<Object> getPopUpVote(@PathVariable Long id, @RequestParam String userId){
+        return ResponseEntity.ok(ApiResponse.onSuccess(voteService.getVoteInformation(id, userId)));
     }
 
     @PostMapping("{id}/vote")
