@@ -29,8 +29,8 @@
 ## 1. 개발 환경
 
 - Android : Android studio, Kotlin 1.5.0
-- Backend : Java17, Spring boot 3,2,1, JPA, H2, Swagger 3.0, AWS EC2, AWS S3
-- 버전 및 이슈관리 : Github, Github Issues, Github Desktop
+- Backend : Java17, Spring boot 3,2,1, JPA, H2, Swagger, AWS EC2, AWS S3
+- 버전 및 이슈관리 : Github, Github Issues, Github Desktop, Docker hub
 - 협업 툴 : Notion, Slack, Github
 - 서비스 배포 환경 : AWS EC2
 - [커밋 컨벤션](https://github.com/softeerbootcamp-3nd/softee5-tenten-BE/wiki/Git-commit-convention)
@@ -49,12 +49,6 @@
 <br>
 
 ## 3. 프로젝트 구조
-
-### Android
-```
-```
-
-### Backend
 
 ```
 ├── Dockerfile
@@ -383,10 +377,6 @@
   - M1칩에서는 Docker image 빌드시에 linux/arm64로 빌드가 되어서 ubuntu(amd64)에서 배포할 때 문제 발생
   - **Solution**: 빌드 단계에서--platform 옵션으로 linux/amd64로 지정
     - docker build --platform linux/amd64 -t [이미지명:태그] .
-
-
-- ### (안드로이드)
-  - (안드로이드 트러블 슈팅 내용)
 
 <br>
 
