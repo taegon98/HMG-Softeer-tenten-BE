@@ -225,7 +225,7 @@
 <br>
 
 ## 5. System Architecture
-<img width="1921" alt="Slide 16_9 - 18" src="https://github.com/softeerbootcamp-3nd/softee5-tenten-BE/assets/102223636/32ad5d79-3873-4d92-a7dd-19e1e57507d6">
+<img width="1921" alt="Slide 16_9 - 18-2" src="https://github.com/taegon98/softee5-tenten-BE/assets/102223636/977da2e7-766a-40f5-ad84-124ff18fff75">
 
 <br>
 
@@ -284,7 +284,12 @@
 
 <br>
 
-## 8. 페이지별 기능
+## 8. Information Architecture (IA)
+<img width="1920" alt="Slide 16_9 - 5" src="https://github.com/taegon98/softee5-tenten-BE/assets/102223636/502d30a1-7d9f-45f4-8ba3-ee1322e4ad30">
+
+<br>
+
+## 9. 페이지별 기능
 
 ### [로그인]
 - 사용자 아이디와 비밀번호를 입력하여 로그인을 진행합니다.
@@ -363,7 +368,7 @@
 
 <br>
 
-## 9. Trouble Shooting 🚀
+## 10. Trouble Shooting 🚀
 
 - ### **@RequestBody가 선언된 객체의 final field 이슈**
   - 컨트롤러에서 @RequestBody를 사용할 경우달 해당 객체는 내장된 Jackson라이브러리를 통해 json을 자바 객체로 변환된다.
@@ -388,7 +393,7 @@
 
 <br>
 
-## 10. 프로젝트 후기
+## 11. 프로젝트 후기
 
 ### 👨‍💻김형민
 
