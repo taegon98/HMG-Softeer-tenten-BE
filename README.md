@@ -18,9 +18,10 @@
 
 <div align="center">
 
-|**👨‍💻김형민(BE/Android)**|**🧑‍🎤박지원(Designer)**|**👩‍💼송지희(PM)**|**👨‍💻이태곤(BE/Infra)**|**👩‍💻윤유정(Android)**|
+|**👨‍💻김형민**|**🧑‍🎤박지원**|**👩‍💼송지희**|**👨‍💻이태곤**|**👩‍💻윤유정**|
 |:------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------------------------------------------------------:|
 |<img src="https://github.com/taegon98/softee5-tenten-BE/assets/102223636/b19791cf-59d4-4d89-beba-6cea0096b05c" height=180 width=150> <br/> |<img src="https://github.com/taegon98/softee5-tenten-BE/assets/102223636/97fda033-59dd-4c91-8425-718e5116c692" height=180 width=150> <br/>| <img src="https://github.com/taegon98/softee5-tenten-BE/assets/102223636/2839b2ed-bd63-4be0-a88c-90ef00e31fd1" height=180 width=150> <br/>| <img src="https://github.com/taegon98/softee5-tenten-BE/assets/102223636/85749d8a-b427-47e3-82a0-ed8ec2b9777b" height=180 width=150> <br/> |<img src="https://github.com/taegon98/softee5-tenten-BE/assets/102223636/6d1c399e-17e0-4051-83e5-117dd212d4cc" height=180 width=150> <br/> |
+|**Backend/Android**|**Design**|**PM**|**Backend/Infra**|**Android**|
 </div>
 
 <br>
@@ -300,7 +301,7 @@
 ### [홈 화면]
 - 로그인 성공시 팝업 스토어 전체 목록을 제공받을 수 있습니다.
   - 내 근처 팝업카: 사용자의 위치에 따라 가까운 순서대로 팝업 스토 목록을 제공합니다.
-  > 더보기 버튼을 누르게 되면, 전체 팝업 스토어 목록을 거리가 가까운순에 따라 제공받을 수 있습니다.
+    - 더보기 버튼을 누르게 되면, 전체 팝업 스토어 목록을 거리가 가까운순에 따라 제공받을 수 있습니다.
   - 추천하는 팝업카 (개선 사항): 스크랩이 많은 순서에 따라 팝업 스토어 목록을 제공합니다.
   - 오픈 예정 팝업카: 오픈예정인 팝업 스토어 목록을 제공합니다.
 - 팝업 스토어를 클릭하면 상세정보 화면으로 이동할 수 있습니다.
@@ -362,13 +363,28 @@
 
 <br>
 
-## 9. Trouble Shooting
+## 9. Trouble Shooting 🚀
 
-- [Request body 생성 이슈](https://github.com/likelion-project-README/README/wiki/README-8.%ED%8A%B8%EB%9F%AC%EB%B8%94-%EC%8A%88%ED%8C%85_%ED%83%AD%EB%A9%94%EB%89%B4-%ED%94%84%EB%A1%9C%ED%95%84-%EB%B2%84%ED%8A%BC-%EC%9D%B4%EC%8A%88)
+- ### **@RequestBody가 선언된 객체의 final field 이슈**
+  - 컨트롤러에서 @RequestBody를 사용할 경우달 해당 객체는 내장된 Jackson라이브러리를 통해 json을 자바 객체로 변환된다.
+  - 자바 객체로 변환되는 역직렬화 과정에서 default 생성자가 있어야 한다.
+  - 최초 final로 필드를 선언해서 default 생성자가 불가능해서 에러가 발생했다.
+  - **Solution**: final 선언 삭제
 
-- [Docker 이슈](https://github.com/likelion-project-README/README/wiki/README-8.%ED%8A%B8%EB%9F%AC%EB%B8%94-%EC%8A%88%ED%8C%85_%ED%94%84%EB%A1%9C%ED%95%84-%EC%88%98%EC%A0%95-%EC%9D%B4%EC%8A%88)
+- ### **@Docker image pull 이슈**
+  - M1 mac book에서 Docker image를 build -> Docker hub push
+  - ec2 ubuntu 환경에서 해당 docker image가 pull 할 때 문제 발생
+    - Error code:  WARNING: The requested image's platform (linux/arm64/v8) 
+ does not match the detected host platform (linux/amd64) 
+ and no specific platform was requested standard_init_linux.go:228: 
+ exec user process caused: exec format error
+  - M1칩에서는 Docker image 빌드시에 linux/arm64로 빌드가 되어서 ubuntu(amd64)에서 배포할 때 문제 발생
+  - **Solution**: 빌드 단계에서--platform 옵션으로 linux/amd64로 지정
+    - docker build --platform linux/amd64 -t [이미지명:태그] .
 
-- [Android 이슈](https://github.com/likelion-project-README/README/wiki/README-8.%ED%8A%B8%EB%9F%AC%EB%B8%94-%EC%8A%88%ED%8C%85_%ED%94%84%EB%A1%9C%ED%95%84-%EC%88%98%EC%A0%95-%EC%9D%B4%EC%8A%88)
+
+- ### (안드로이드)
+  - (안드로이드 트러블 슈팅 내용)
 
 <br>
 
