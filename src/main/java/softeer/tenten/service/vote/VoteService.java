@@ -27,16 +27,25 @@ public class VoteService {
     private final UserService userService;
 
     @Transactional(readOnly = false)
-    public List<VoteResponse.RegisterVote> getPopUpVoteOption(Long id){
+    public VoteResponse.VoteInformation getVoteInformation(Long id, String userId){
         List<Option> options = getOptionsByPopUpId(id);
+        Long myVoteNumber = -1L;
 
         if(options.isEmpty()){
             throw new GeneralException(StatusCode.NOT_FOUND);
         }
 
-        return options.stream()
-                .map((option) -> VoteMapper.toVoteOption(option, getVoteResult(option.getId())))
-                .toList();
+        for(Option option: options) {
+            if (existsVote(option.getId(), userId)) {
+               myVoteNumber = option.getId();
+
+               break;
+            }
+        }
+
+        return VoteMapper.toVoteInformation(options.stream()
+                .map((option) -> VoteMapper.toVoteResult(option, getVoteResult(option.getId())))
+                .toList(), myVoteNumber);
     }
 
     @Transactional
