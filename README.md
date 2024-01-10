@@ -29,10 +29,10 @@
 ## 1. 개발 환경
 
 - Android : Android studio, Kotlin 1.5.0
-- Backend : Java17, Spring boot 3,2,1, JPA, H2, Swagger, AWS EC2, AWS S3
+- Backend : Java17, Spring boot 3,2,1, JPA, H2, Swagger
 - 버전 및 이슈관리 : Github, Github Issues, Github Desktop, Docker hub
 - 협업 툴 : Notion, Slack, Github
-- 서비스 배포 환경 : AWS EC2
+- 서비스 배포 환경 : AWS EC2, AWS S3
 - [커밋 컨벤션](https://github.com/softeerbootcamp-3nd/softee5-tenten-BE/wiki/Git-commit-convention)
 - [코드 컨벤션](https://github.com/softeerbootcamp-3nd/softee5-tenten-BE/wiki/Git-code-convention)
 - [API Document](https://github.com/softeerbootcamp-3nd/softee5-tenten-BE/wiki/API-document)
