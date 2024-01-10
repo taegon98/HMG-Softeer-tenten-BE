@@ -51,165 +51,64 @@
 ## 3. 프로젝트 구조
 
 ```
-├── Dockerfile
-├── README.md
-├── build
-│   ├── classes
-│   │   └── java
-│   │       ├── main
-│   │       │   └── softeer
-│   │       │       └── tenten
-│   │       │           ├── TentenApplication.class
-│   │       │           ├── config
-│   │       │           │   └── S3
-│   │       │           │       └── S3Config.class
-│   │       │           ├── controller
-│   │       │           │   ├── event
-│   │       │           │   │   ├── EventController.class
-│   │       │           │   │   └── UserEventController.class
-│   │       │           │   ├── popup
-│   │       │           │   │   └── PopupController.class
-│   │       │           │   ├── review
-│   │       │           │   │   └── ReviewController.class
-│   │       │           │   ├── user
-│   │       │           │   │   └── UserController.class
-│   │       │           │   ├── vote
-│   │       │           │   │   └── VoteController.class
-│   │       │           │   └── waiting
-│   │       │           │       └── WaitingController.class
-│   │       │           ├── dto
-│   │       │           │   ├── event
-│   │       │           │   │   ├── EventRequest$EventCode$EventCodeBuilder.class
-│   │       │           │   │   ├── EventRequest$EventCode.class
-│   │       │           │   │   ├── EventRequest.class
-│   │       │           │   │   ├── EventResponse$EventDetail$EventDetailBuilder.class
-│   │       │           │   │   ├── EventResponse$EventDetail.class
-│   │       │           │   │   ├── EventResponse$EventList$EventListBuilder.class
-│   │       │           │   │   ├── EventResponse$EventList.class
-│   │       │           │   │   └── EventResponse.class
-│   │       │           │   ├── popup
-│   │       │           │   │   ├── PopupResponse$PopupDetail$PopupDetailBuilder.class
-│   │       │           │   │   ├── PopupResponse$PopupDetail.class
-│   │       │           │   │   ├── PopupResponse$PopupList$PopupListBuilder.class
-│   │       │           │   │   ├── PopupResponse$PopupList.class
-│   │       │           │   │   ├── PopupResponse.class
-│   │       │           │   │   └── waiting
-│   │       │           │   │       ├── WaitingResponse$WaitingInformation$WaitingInformationBuilder.class
-│   │       │           │   │       ├── WaitingResponse$WaitingInformation.class
-│   │       │           │   │       └── WaitingResponse.class
-│   │       │           │   ├── review
-│   │       │           │   │   ├── ReviewResponse$ReviewList$ReviewListBuilder.class
-│   │       │           │   │   ├── ReviewResponse$ReviewList.class
-│   │       │           │   │   └── ReviewResponse.class
-│   │       │           │   ├── user
-│   │       │           │   │   ├── UserRequest$Login$LoginBuilder.class
-│   │       │           │   │   ├── UserRequest$Login.class
-│   │       │           │   │   ├── UserRequest.class
-│   │       │           │   │   ├── UserResponse$Login$LoginBuilder.class
-│   │       │           │   │   ├── UserResponse$Login.class
-│   │       │           │   │   └── UserResponse.class
-│   │       │           │   ├── vote
-│   │       │           │   │   ├── VoteRequest$VoteOption$VoteOptionBuilder.class
-│   │       │           │   │   ├── VoteRequest$VoteOption.class
-│   │       │           │   │   ├── VoteRequest.class
-│   │       │           │   │   ├── VoteResponse$RegisterVote$RegisterVoteBuilder.class
-│   │       │           │   │   ├── VoteResponse$RegisterVote.class
-│   │       │           │   │   └── VoteResponse.class
-│   │       │           │   └── waiting
-│   │       │           │       ├── WaitingRequest$RegisterWaiting$RegisterWaitingBuilder.class
-│   │       │           │       ├── WaitingRequest$RegisterWaiting.class
-│   │       │           │       └── WaitingRequest.class
-│   │       │           ├── entity
-│   │       │           │   ├── area
-│   │       │           │   │   ├── Destination$DestinationBuilder.class
-│   │       │           │   │   ├── Destination.class
-│   │       │           │   │   ├── Option$OptionBuilder.class
-│   │       │           │   │   └── Option.class
-│   │       │           │   ├── criteria
-│   │       │           │   │   ├── Brand$BrandBuilder.class
-│   │       │           │   │   ├── Brand.class
-│   │       │           │   │   ├── Category$CategoryBuilder.class
-│   │       │           │   │   ├── Category.class
-│   │       │           │   │   ├── PopupTag$PopupTagBuilder.class
-│   │       │           │   │   ├── PopupTag.class
-│   │       │           │   │   ├── Tag$TagBuilder.class
-│   │       │           │   │   └── Tag.class
-│   │       │           │   ├── event
-│   │       │           │   │   ├── Event$EventBuilder.class
-│   │       │           │   │   ├── Event.class
-│   │       │           │   │   ├── UserEvent$UserEventBuilder.class
-│   │       │           │   │   └── UserEvent.class
-│   │       │           │   ├── popup
-│   │       │           │   │   ├── Popup$PopupBuilder.class
-│   │       │           │   │   ├── Popup.class
-│   │       │           │   │   ├── PopupImage$PopupImageBuilder.class
-│   │       │           │   │   └── PopupImage.class
-│   │       │           │   ├── review
-│   │       │           │   │   ├── Review$ReviewBuilder.class
-│   │       │           │   │   └── Review.class
-│   │       │           │   ├── user
-│   │       │           │   │   ├── User$UserBuilder.class
-│   │       │           │   │   └── User.class
-│   │       │           │   ├── vote
-│   │       │           │   │   ├── Vote$VoteBuilder.class
-│   │       │           │   │   └── Vote.class
-│   │       │           │   └── waiting
-│   │       │           │       ├── Waiting$WaitingBuilder.class
-│   │       │           │       └── Waiting.class
-│   │       │           ├── global
-│   │       │           │   ├── api
-│   │       │           │   │   ├── ApiResponse.class
-│   │       │           │   │   └── status
-│   │       │           │   │       └── StatusCode.class
-│   │       │           │   ├── exception
-│   │       │           │   │   └── GeneralException.class
-│   │       │           │   └── handler
-│   │       │           │       └── GlobalExceptionHandler.class
-│   │       │           ├── mapper
-│   │       │           │   ├── event
-│   │       │           │   │   └── EventMapper.class
-│   │       │           │   ├── popup
-│   │       │           │   │   └── PopupMapper.class
-│   │       │           │   ├── review
-│   │       │           │   │   └── ReviewMapper.class
-│   │       │           │   ├── user
-│   │       │           │   │   └── UserMapper.class
-│   │       │           │   ├── vote
-│   │       │           │   │   └── VoteMapper.class
-│   │       │           │   └── waiting
-│   │       │           │       └── WaitingMapper.class
-│   │       │           ├── repository
-│   │       │           │   ├── area
-│   │       │           │   │   └── OptionRepository.class
-│   │       │           │   ├── event
-│   │       │           │   │   ├── EventRepository.class
-│   │       │           │   │   └── UserEventRepository.class
-│   │       │           │   ├── popup
-│   │       │           │   │   └── PopupRepository.class
-│   │       │           │   ├── review
-│   │       │           │   │   └── ReviewRepository.class
-│   │       │           │   ├── user
-│   │       │           │   │   └── UserRepository.class
-│   │       │           │   ├── vote
-│   │       │           │   │   └── VoteRepository.class
-│   │       │           │   └── waiting
-│   │       │           │       └── WaitingRepository.class
-│   │       │           └── service
-│   │       │               ├── S3
-│   │       │               │   └── AwsS3Service.class
-│   │       │               ├── event
-│   │       │               │   ├── EventService.class
-│   │       │               │   └── UserEventService.class
-│   │       │               ├── popup
-│   │       │               │   └── PopupService.class
-│   │       │               ├── review
-│   │       │               │   └── ReviewService.class
-│   │       │               ├── user
-│   │       │               │   └── UserService.class
-│   │       │               ├── vote
-│   │       │               │   └── VoteService.class
-│   │       │               └── waiting
-│   │       │                   └── WaitingService.class
+├── java
+│   └── softeer
+│       └── tenten
+│           ├── TentenApplication.java
+│           ├── config
+│           │   └── S3
+│           ├── controller
+│           │   ├── event
+│           │   ├── popup
+│           │   ├── review
+│           │   ├── user
+│           │   ├── vote
+│           │   └── waiting
+│           ├── dto
+│           │   ├── event
+│           │   ├── popup
+│           │   ├── review
+│           │   ├── user
+│           │   ├── vote
+│           │   └── waiting
+│           ├── entity
+│           │   ├── area
+│           │   ├── criteria
+│           │   ├── event
+│           │   ├── popup
+│           │   ├── review
+│           │   ├── user
+│           │   ├── vote
+│           │   └── waiting
+│           ├── global
+│           │   ├── api
+│           │   ├── exception
+│           │   └── handler
+│           ├── mapper
+│           │   ├── event
+│           │   ├── popup
+│           │   ├── review
+│           │   ├── user
+│           │   ├── vote
+│           │   └── waiting
+│           ├── repository
+│           │   ├── area
+│           │   ├── event
+│           │   ├── popup
+│           │   ├── review
+│           │   ├── user
+│           │   ├── vote
+│           │   └── waiting
+│           └── service
+│               ├── S3
+│               ├── event
+│               ├── popup
+│               ├── review
+│               ├── user
+│               ├── vote
+│               └── waiting
+└── resources
+    └── application.yml
 ```
 
 <br>
